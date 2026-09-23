@@ -1,44 +1,40 @@
-import { useState, type Dispatch, type SetStateAction } from 'react'
-import { QueryClient, useQuery, useQueryClient } from '@tanstack/react-query'
-import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
-import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { useState, type Dispatch, type SetStateAction } from 'react';
+import { QueryClient, useQuery, useQueryClient } from '@tanstack/react-query';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
+import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      gcTime: 1000 * 60 * 60 * 24,
-    },
-  },
-})
+      gcTime: 1000 * 60 * 60 * 24
+    }
+  }
+});
 
 const persister = createAsyncStoragePersister({
-  storage: window.localStorage,
-})
+  storage: window.localStorage
+});
 
 type Post = {
-  id: number
-  title: string
-  body: string
-}
+  id: number;
+  title: string;
+  body: string;
+};
 
 function usePosts() {
   return useQuery({
     queryKey: ['posts'],
     queryFn: async (): Promise<Array<Post>> => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts')
-      return await response.json()
-    },
-  })
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+      return await response.json();
+    }
+  });
 }
 
-function Posts({
-  setPostId,
-}: {
-  setPostId: Dispatch<SetStateAction<number>>
-}) {
-  const queryClient = useQueryClient()
-  const { status, data, error, isFetching } = usePosts()
+function Posts({ setPostId }: { setPostId: Dispatch<SetStateAction<number>> }) {
+  const queryClient = useQueryClient();
+  const { status, data, error, isFetching } = usePosts();
 
   return (
     <div>
@@ -51,16 +47,16 @@ function Posts({
         ) : (
           <>
             <div>
-              {data.map((post) => (
+              {data.map(post => (
                 <p key={post.id}>
                   <a
                     onClick={() => setPostId(post.id)}
-                    href="#"
+                    href='#'
                     style={
                       queryClient.getQueryData(['post', post.id])
                         ? {
                             fontWeight: 'bold',
-                            color: 'green',
+                            color: 'green'
                           }
                         : {}
                     }
@@ -75,37 +71,37 @@ function Posts({
         )}
       </div>
     </div>
-  )
+  );
 }
 
 const getPostById = async (id: number): Promise<Post> => {
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${id}`,
-  )
-  return await response.json()
-}
+    `https://jsonplaceholder.typicode.com/posts/${id}`
+  );
+  return await response.json();
+};
 
 function usePost(postId: number) {
   return useQuery({
     queryKey: ['post', postId],
     queryFn: () => getPostById(postId),
-    enabled: !!postId,
-  })
+    enabled: !!postId
+  });
 }
 
 function Post({
   postId,
-  setPostId,
+  setPostId
 }: {
-  postId: number
-  setPostId: Dispatch<SetStateAction<number>>
+  postId: number;
+  setPostId: Dispatch<SetStateAction<number>>;
 }) {
-  const { status, data, error, isFetching } = usePost(postId)
+  const { status, data, error, isFetching } = usePost(postId);
 
   return (
     <div>
       <div>
-        <a onClick={() => setPostId(-1)} href="#">
+        <a onClick={() => setPostId(-1)} href='#'>
           Back
         </a>
       </div>
@@ -123,11 +119,11 @@ function Post({
         </>
       )}
     </div>
-  )
+  );
 }
 
 export default function App() {
-  const [postId, setPostId] = useState(-1)
+  const [postId, setPostId] = useState(-1);
 
   return (
     <PersistQueryClientProvider
@@ -135,13 +131,13 @@ export default function App() {
       persistOptions={{ persister }}
     >
       <p>
-        As you visit the posts below, you will notice them in a loading state
-        the first time you load them. However, after you return to this list and
-        click on any posts you have already visited again, you will see them
-        load instantly and background refresh right before your eyes!{' '}
+        As you visit the posts below, you will notice them in a loading state the
+        first time you load them. However, after you return to this list and click
+        on any posts you have already visited again, you will see them load
+        instantly and background refresh right before your eyes!{' '}
         <strong>
-          (You may need to throttle your network speed to simulate longer
-          loading sequences)
+          (You may need to throttle your network speed to simulate longer loading
+          sequences)
         </strong>
       </p>
       {postId > -1 ? (
@@ -151,5 +147,5 @@ export default function App() {
       )}
       <ReactQueryDevtools initialIsOpen />
     </PersistQueryClientProvider>
-  )
+  );
 }

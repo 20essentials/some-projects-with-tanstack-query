@@ -1,11 +1,11 @@
 import {
   QueryClient,
   QueryClientProvider,
-  useQuery,
-} from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+  useQuery
+} from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
@@ -13,23 +13,21 @@ export default function App() {
       <ReactQueryDevtools />
       <Example />
     </QueryClientProvider>
-  )
+  );
 }
 
 function Example() {
   const { isPending, error, data, isFetching } = useQuery({
     queryKey: ['repoData'],
     queryFn: async () => {
-      const response = await fetch(
-        'https://api.github.com/repos/TanStack/query',
-      )
-      return await response.json()
-    },
-  })
+      const response = await fetch('https://api.github.com/repos/TanStack/query');
+      return await response.json();
+    }
+  });
 
-  if (isPending) return 'Loading...'
+  if (isPending) return 'Loading...';
 
-  if (error) return 'An error has occurred: ' + error.message
+  if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <div>
@@ -40,5 +38,5 @@ function Example() {
       <strong>🍴 {data.forks_count}</strong>
       <div>{isFetching ? 'Updating...' : ''}</div>
     </div>
-  )
+  );
 }
