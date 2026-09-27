@@ -9,5 +9,9 @@ export const projects = [
   {
     urlFile: baseUrl('/simple'),
     titleProject: 'Simple'
+  },
+  {
+    urlFile: baseUrl('/auto-refetching'),
+    titleProject: 'Auto Refetching'
   }
 ];
