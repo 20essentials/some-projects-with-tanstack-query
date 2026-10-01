@@ -13,5 +13,9 @@ export const projects = [
   {
     urlFile: baseUrl('/auto-refetching'),
     titleProject: 'Auto Refetching'
+  },
+  {
+    urlFile: baseUrl('/nextjs-app-optimistic-updates'),
+    titleProject: 'Nextjs App Optimistic Updates'
   }
 ];
