@@ -17,5 +17,9 @@ export const projects = [
   {
     urlFile: baseUrl('/nextjs-app-optimistic-updates'),
     titleProject: 'Nextjs App Optimistic Updates'
+  },
+  {
+    urlFile: baseUrl('/pagination'),
+    titleProject: 'Pagination'
   }
 ];
