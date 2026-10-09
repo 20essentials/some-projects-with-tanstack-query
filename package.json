@@ -19,7 +19,8 @@
     "@types/react-dom": "19.3.0",
     "astro": "5.13.5",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "react-intersection-observer": "11.0.1"
   },
   "devDependencies": {
     "gh-pages": "6.3.0"

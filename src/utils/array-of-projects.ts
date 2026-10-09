@@ -21,5 +21,9 @@ export const projects = [
   {
     urlFile: baseUrl('/pagination'),
     titleProject: 'Pagination'
+  },
+  {
+    urlFile: baseUrl('/load-more-infinite-scroll'),
+    titleProject: 'Load More Infinite Scroll'
   }
 ];
