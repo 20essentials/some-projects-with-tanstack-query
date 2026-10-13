@@ -25,5 +25,9 @@ export const projects = [
   {
     urlFile: baseUrl('/load-more-infinite-scroll'),
     titleProject: 'Load More Infinite Scroll'
+  },
+  {
+    urlFile: baseUrl('/infinite-query-with-max-pages'),
+    titleProject: 'Infinite Query With Max Pages'
   }
 ];
