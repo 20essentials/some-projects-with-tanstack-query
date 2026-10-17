@@ -29,5 +29,9 @@ export const projects = [
   {
     urlFile: baseUrl('/infinite-query-with-max-pages'),
     titleProject: 'Infinite Query With Max Pages'
+  },
+  {
+    urlFile: baseUrl('/suspense'),
+    titleProject: 'Suspense'
   }
 ];

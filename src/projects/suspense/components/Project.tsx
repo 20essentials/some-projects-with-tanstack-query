@@ -1,0 +1,34 @@
+import { useSuspenseQuery } from '@tanstack/react-query';
+import type { Dispatch, SetStateAction } from 'react';
+
+import { projectQueryOptions } from '../queries';
+import Button from './Button';
+import Spinner from './Spinner';
+
+export default function Project({
+  activeProject,
+  setActiveProject
+}: {
+  activeProject: string;
+  setActiveProject: Dispatch<SetStateAction<string | null>>;
+}) {
+  const { data, isFetching } = useSuspenseQuery(
+    projectQueryOptions(activeProject)
+  );
+
+  return (
+    <div>
+      <Button onClick={() => setActiveProject(null)}>Back</Button>
+      <h1>
+        {activeProject} {isFetching ? <Spinner /> : null}
+      </h1>
+      <div>
+        <p>forks: {data.forks_count}</p>
+        <p>stars: {data.stargazers_count}</p>
+        <p>watchers: {data.watchers_count}</p>
+      </div>
+      <br />
+      <br />
+    </div>
+  );
+}
