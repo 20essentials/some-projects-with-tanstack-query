@@ -33,5 +33,9 @@ export const projects = [
   {
     urlFile: baseUrl('/suspense'),
     titleProject: 'Suspense'
+  },
+  {
+    urlFile: baseUrl('/default-query-function'),
+    titleProject: 'Default Query Function'
   }
 ];
