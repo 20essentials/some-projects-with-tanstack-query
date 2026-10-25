@@ -37,5 +37,9 @@ export const projects = [
   {
     urlFile: baseUrl('/default-query-function'),
     titleProject: 'Default Query Function'
+  },
+  {
+    urlFile: baseUrl('/prefetching'),
+    titleProject: 'Prefetching'
   }
 ];
