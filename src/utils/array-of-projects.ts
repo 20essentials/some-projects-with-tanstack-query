@@ -41,5 +41,9 @@ export const projects = [
   {
     urlFile: baseUrl('/prefetching'),
     titleProject: 'Prefetching'
+  },
+  {
+    urlFile: baseUrl('/star-wars'),
+    titleProject: 'Star Wars'
   }
 ];
