@@ -49,5 +49,9 @@ export const projects = [
   {
     urlFile: baseUrl('/rick-morty-react-router'),
     titleProject: 'Rick Morty React Router'
+  },
+  {
+    urlFile: baseUrl('/offline-tanstack-router'),
+    titleProject: 'Offline Tanstack Router'
   }
 ];
