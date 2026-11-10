@@ -53,5 +53,9 @@ export const projects = [
   {
     urlFile: baseUrl('/offline-tanstack-router'),
     titleProject: 'Offline Tanstack Router'
+  },
+  {
+    urlFile: baseUrl('/algolia'),
+    titleProject: 'Algolia'
   }
 ];
