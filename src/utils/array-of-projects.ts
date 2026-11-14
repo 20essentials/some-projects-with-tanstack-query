@@ -57,5 +57,9 @@ export const projects = [
   {
     urlFile: baseUrl('/algolia'),
     titleProject: 'Algolia'
+  },
+  {
+    urlFile: baseUrl('/shadow-dom'),
+    titleProject: 'Shadow Dom'
   }
 ];
