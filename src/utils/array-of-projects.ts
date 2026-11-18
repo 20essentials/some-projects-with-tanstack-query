@@ -61,5 +61,9 @@ export const projects = [
   {
     urlFile: baseUrl('/shadow-dom'),
     titleProject: 'Shadow Dom'
+  },
+  {
+    urlFile: baseUrl('/devtools-panel'),
+    titleProject: 'Devtools Panel'
   }
 ];
