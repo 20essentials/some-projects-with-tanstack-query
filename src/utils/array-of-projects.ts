@@ -69,5 +69,9 @@ export const projects = [
   {
     urlFile: baseUrl('/chat'),
     titleProject: 'Chat'
+  },
+  {
+    urlFile: baseUrl('/batching'),
+    titleProject: 'Batching'
   }
 ];
